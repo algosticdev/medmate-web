@@ -3426,3 +3426,206 @@ tr:nth-of-type(4n) .medicine-symbol {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* ==========================================================================
+   Extend the soft-rounded SaaS look to every other page: toolbar, filters,
+   compartment cards, settings, dialogs, device pairing, forms.
+   ========================================================================== */
+.toolbar {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.search-field {
+  border-radius: 999px;
+  border-color: var(--line);
+  background: #f4f7f4;
+}
+.search-field input {
+  background: transparent;
+}
+.filters {
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.filters input,
+.filters select {
+  border-radius: 10px;
+}
+.segmented {
+  border-radius: 999px;
+  background: #f4f7f4;
+  border: 0;
+  padding: 4px;
+}
+.segmented button {
+  border-radius: 999px;
+  font-weight: 600;
+}
+.segmented .selected {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: var(--card-shadow);
+}
+
+/* Compartment cards */
+.compartment-grid {
+  gap: 16px;
+}
+.compartment-card {
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+}
+.compartment-number {
+  color: var(--accent);
+  font-weight: 700;
+}
+.compartment-medicine {
+  color: var(--ink-2);
+}
+.compartment-times > span {
+  background: var(--accent-light);
+  color: var(--accent-light-ink);
+  border-radius: 999px;
+  font-weight: 600;
+}
+.hardware-state {
+  border-top-color: var(--line);
+  color: var(--ink-3);
+}
+.stock-track {
+  background: var(--line);
+  border-radius: 999px;
+}
+.stock-track span {
+  border-radius: 999px;
+}
+
+/* Settings */
+.settings-grid {
+  gap: 16px;
+}
+.settings-panel,
+.settings-form {
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+.settings-note {
+  background: var(--accent-light);
+  border-radius: var(--radius);
+  color: var(--accent-light-ink);
+  border: 0;
+}
+.settings-note h2 {
+  color: var(--accent-ink);
+}
+.settings-note p {
+  color: #1f5a3d;
+}
+.settings-note .info-line {
+  background: rgba(255, 255, 255, 0.55);
+  border: 0;
+}
+.checkbox-label input {
+  accent-color: var(--accent);
+}
+.feedback-copy small {
+  color: var(--ink-2);
+}
+
+/* Device data / pairing */
+.device-detail,
+.device-pairing-body {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+.device-data span {
+  color: var(--ink-3);
+}
+.device-data strong {
+  color: var(--ink);
+}
+.device-pairing-form .btn {
+  border-radius: 999px;
+}
+.paired-device {
+  background: #f9fbf9;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+.paired-device strong {
+  color: var(--ink);
+}
+.paired-device span,
+.device-pairing-empty {
+  color: var(--ink-3);
+}
+
+/* Info banners / notices / form states */
+.info-line,
+.notice {
+  background: var(--accent-light);
+  border: 0;
+  border-radius: 12px;
+  color: var(--accent-light-ink);
+}
+.form-error {
+  background: #fbe3e0;
+  border: 0;
+  border-radius: 12px;
+  color: #a4362a;
+}
+.form-success {
+  background: var(--accent-light);
+  border: 0;
+  border-radius: 12px;
+  color: #1c7a4e;
+}
+
+/* Row actions / small buttons */
+.row-actions .icon-button {
+  border-radius: 999px;
+}
+.small-btn {
+  border-radius: 999px;
+}
+
+/* Dialogs / modals */
+dialog {
+  border-radius: 22px;
+  border: 0;
+  box-shadow: 0 24px 70px rgba(16, 40, 30, 0.18);
+}
+.modal-heading {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.modal-heading h2 {
+  color: var(--ink);
+}
+dialog form {
+  padding: 24px;
+}
+.modal-actions {
+  border-top: 1px solid var(--line);
+}
+.stock-edit-name {
+  color: var(--ink);
+}
+.delete-message p {
+  color: var(--ink-2);
+}
+
+/* Charts */
+.chart-container {
+  color: var(--ink-2);
+}
+.summary-chart > .notice,
+.summary-chart > p {
+  color: var(--ink-3);
+}
