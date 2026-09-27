@@ -59,7 +59,12 @@ export default function Login({ authError }) {
   return (
     <main className="sign-in-page">
       <section className="sign-in-card" aria-labelledby="welcome-title">
-        <Brand />
+        <div className="sign-in-card-top">
+          <Brand />
+          <a className="text-link" href="/landing.html">
+            About MedMate
+          </a>
+        </div>
         <div className="auth-tabs" aria-label="Account access">
           <button
             type="button"

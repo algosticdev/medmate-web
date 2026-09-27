@@ -3763,3 +3763,14 @@ dialog form {
 .brand-mark {
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
 }
+
+/* Sign-in card: brand + link to the landing page, on one row */
+.sign-in-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.sign-in-card-top .brand {
+  margin-bottom: 0;
+}
