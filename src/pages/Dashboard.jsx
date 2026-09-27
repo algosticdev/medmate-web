@@ -117,7 +117,6 @@ export default function Dashboard({ state }) {
           </a>
         </section>
       </div>
-      <RecordNote />
     </>
   );
 }
