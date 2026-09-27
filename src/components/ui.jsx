@@ -1,12 +1,34 @@
 import { useEffect, useRef } from "react";
-import { ArrowRight, Pill, LayoutGrid, X, Activity, Plus } from "lucide-react";
+import { ArrowRight, Pill, LayoutGrid, X, Activity } from "lucide-react";
 import { label } from "../services/domain.js";
+export function BrandMark({ size = 34 }) {
+  return (
+    <svg
+      className="brand-mark"
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g transform="rotate(-45 20 20)">
+        <rect x="6" y="14" width="28" height="12" rx="6" className="brand-mark-cap-dark" />
+        <path d="M20 14h8a6 6 0 0 1 0 12h-8z" className="brand-mark-cap-light" />
+      </g>
+      <circle cx="27" cy="27" r="9" className="brand-mark-disc" />
+      <path
+        d="M27 23v8M23 27h8"
+        className="brand-mark-cross"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 export function Brand() {
   return (
     <a className="brand" href="#dashboard">
-      <span className="brand-icon">
-        <Plus size={25} strokeWidth={3} />
-      </span>
+      <BrandMark />
       MedMate<span className="brand-dot">.</span>
     </a>
   );
