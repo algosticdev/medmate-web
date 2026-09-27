@@ -11,13 +11,37 @@ export function BrandMark({ size = 34 }) {
       fill="none"
       aria-hidden="true"
     >
-      <g transform="rotate(-45 20 20)">
-        <rect x="6" y="14" width="28" height="12" rx="6" className="brand-mark-cap-dark" />
-        <path d="M20 14h8a6 6 0 0 1 0 12h-8z" className="brand-mark-cap-light" />
+      <defs>
+        <clipPath id="brand-mark-left">
+          <rect x="2" y="12" width="16" height="16" />
+        </clipPath>
+        <clipPath id="brand-mark-right">
+          <rect x="18" y="12" width="16" height="16" />
+        </clipPath>
+      </defs>
+      <g transform="rotate(-45 18 20)">
+        <rect
+          x="2"
+          y="12"
+          width="32"
+          height="16"
+          rx="8"
+          className="brand-mark-cap-light"
+        />
+        <rect
+          x="2"
+          y="12"
+          width="32"
+          height="16"
+          rx="8"
+          clipPath="url(#brand-mark-left)"
+          className="brand-mark-cap-dark"
+        />
+        <rect x="17" y="12" width="2" height="16" className="brand-mark-seam" />
       </g>
-      <circle cx="27" cy="27" r="9" className="brand-mark-disc" />
+      <circle cx="28" cy="28" r="9" className="brand-mark-disc" />
       <path
-        d="M27 23v8M23 27h8"
+        d="M28 24v8M24 28h8"
         className="brand-mark-cross"
         strokeWidth="2.4"
         strokeLinecap="round"

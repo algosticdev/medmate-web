@@ -3727,3 +3727,39 @@ dialog form {
 .brand-mark-cross {
   stroke: var(--accent);
 }
+
+/* Brand mark v2: clean two-tone capsule with a seam line + cross badge */
+.brand-mark-cap-light {
+  fill: var(--accent);
+  opacity: 1;
+}
+.brand-mark-cap-dark {
+  fill: var(--accent-ink, var(--accent));
+}
+.brand-mark-seam {
+  fill: rgba(255, 255, 255, 0.35);
+}
+
+/* Brand mark: brighter dedicated colours so it stays visible on the dark sidebar */
+.brand-mark-cap-light {
+  fill: #22b58a;
+  opacity: 1;
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 0.75;
+}
+.brand-mark-cap-dark {
+  fill: #0d6a4f;
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 0.75;
+}
+.brand-mark-disc {
+  fill: #fff;
+  stroke: #0d6a4f;
+  stroke-width: 1.6;
+}
+.brand-mark-cross {
+  stroke: #0d6a4f;
+}
+.brand-mark {
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+}
