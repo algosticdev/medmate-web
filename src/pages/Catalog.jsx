@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Pencil, Trash2, Clock3, Package, Cpu } from "lucide-react";
+import { Search, Pencil, Trash2, Clock3, Package, Cpu, Sun, Moon, Pill } from "lucide-react";
 import { Panel, Table, MedicineCell, Badge, Empty } from "../components/ui.jsx";
 import {
   entries,
@@ -186,18 +186,32 @@ export function Compartments({ state }) {
           report?.reportedAt &&
           Date.now() - report.reportedAt < appConfig.heartbeatTimeoutMs &&
           deviceStatus(device) === "ONLINE";
+        const [day, side] = id.split("-");
+        const SideIcon = side === "A" ? Sun : Moon;
+        const medicineName = assigned.length
+          ? state.catalog?.medicines?.[assigned[0].medicineId]?.name ||
+            assigned[0].medicineName
+          : null;
         return (
           <Panel key={id} className="compartment-card">
             <div className="compartment-card-top">
-              <span className="compartment-number">{id}</span>
+              <span
+                className={`compartment-slot ${assigned.length ? "filled" : ""}`}
+                aria-hidden="true"
+              >
+                <Pill size={18} />
+              </span>
               <Badge status={assigned.length ? "ASSIGNED" : "AVAILABLE"} />
             </div>
-            <h2>{id}</h2>
+            <div className="compartment-id-row">
+              <span className="compartment-number">{day}</span>
+              <span className="compartment-side">
+                <SideIcon size={13} />
+                {side === "A" ? "Morning" : "Evening"}
+              </span>
+            </div>
             <p className="compartment-medicine">
-              {assigned.length
-                ? state.catalog?.medicines?.[assigned[0].medicineId]?.name ||
-                  assigned[0].medicineName
-                : "No medicine assigned"}
+              {medicineName || "No medicine assigned"}
             </p>
             <div className="compartment-times">
               {assigned.length ? (

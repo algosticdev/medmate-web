@@ -3629,3 +3629,74 @@ dialog form {
 .summary-chart > p {
   color: var(--ink-3);
 }
+
+/* Compartments: look like an actual pill-organizer slot, not a generic card */
+.compartment-card {
+  position: relative;
+  padding: 20px 20px 18px;
+  overflow: visible;
+}
+.compartment-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--line) 0 8px,
+    transparent 8px 12px
+  );
+}
+.compartment-card-top {
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.compartment-slot {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f4f7f4;
+  border: 1.5px dashed #cfdccf;
+  color: #b7c6b8;
+}
+.compartment-slot.filled {
+  background: var(--accent-light);
+  border: 1.5px solid var(--accent-light);
+  color: var(--accent-light-ink);
+}
+.compartment-id-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+.compartment-number {
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+.compartment-side {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+.compartment-medicine {
+  font-size: 13px;
+  color: var(--ink-2);
+  min-height: 18px;
+}
+.compartment-times {
+  min-height: 46px;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px dashed var(--line);
+}
