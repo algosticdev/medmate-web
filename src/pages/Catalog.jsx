@@ -229,11 +229,6 @@ export function Stock({ state, edit }) {
   const medicines = entries(state.catalog?.medicines);
   return (
     <>
-      <div className="info-line">
-        <Package size={18} />
-        Stock is updated manually. Opening a compartment never reduces the stock
-        count.
-      </div>
       <Panel>
         {medicines.length ? (
           <Table
