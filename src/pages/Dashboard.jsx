@@ -6,7 +6,6 @@ import {
   Badge,
   LinkTo,
   Empty,
-  RecordNote,
 } from "../components/ui.jsx";
 import Stats from "../components/Stats.jsx";
 import AlertsList from "../components/AlertsList.jsx";

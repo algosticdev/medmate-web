@@ -107,11 +107,6 @@ export function Schedules({ state, edit, notify }) {
   }
   return (
     <>
-      <div className="info-line">
-        <Clock3 size={18} />
-        Daily recurring schedules · {appConfig.timeZone} · Windows are measured
-        after the scheduled time.
-      </div>
       <Panel>
         {rows.length ? (
           <Table

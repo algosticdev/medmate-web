@@ -403,9 +403,6 @@ export default function App() {
             <LogOut size={19} />
           <span>Log out</span>
           </button>
-          <span className="sidebar-version">
-            MedMate v1.0 <span>CARE, CONNECTED.</span>
-          </span>
         </div>
       </aside>
       <div className="main-shell" inert={mobile && sidebar ? true : undefined}>
