@@ -3409,3 +3409,20 @@ tr:nth-of-type(4n) .medicine-symbol {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Fix: remove stray focus outline on the scrollable main region */
+#main-content:focus,
+#main-content:focus-visible {
+  outline: none;
+}
+
+/* KPI cards: wrap onto multiple rows instead of squeezing 7 into one line */
+.stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  row-gap: 16px;
+}
+@media (min-width: 1600px) {
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
