@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Pencil, Trash2, Clock3, Package, Cpu, Sun, Moon, Pill } from "lucide-react";
+import { Search, Pencil, Trash2, Clock3, Package, Cpu, Pill } from "lucide-react";
 import { Panel, Table, MedicineCell, Badge, Empty } from "../components/ui.jsx";
 import {
   entries,
@@ -186,8 +186,6 @@ export function Compartments({ state }) {
           report?.reportedAt &&
           Date.now() - report.reportedAt < appConfig.heartbeatTimeoutMs &&
           deviceStatus(device) === "ONLINE";
-        const [day, side] = id.split("-");
-        const SideIcon = side === "A" ? Sun : Moon;
         const medicineName = assigned.length
           ? state.catalog?.medicines?.[assigned[0].medicineId]?.name ||
             assigned[0].medicineName
@@ -204,11 +202,7 @@ export function Compartments({ state }) {
               <Badge status={assigned.length ? "ASSIGNED" : "AVAILABLE"} />
             </div>
             <div className="compartment-id-row">
-              <span className="compartment-number">{day}</span>
-              <span className="compartment-side">
-                <SideIcon size={13} />
-                {side === "A" ? "Morning" : "Evening"}
-              </span>
+              <span className="compartment-number">{id}</span>
             </div>
             <p className="compartment-medicine">
               {medicineName || "No medicine assigned"}
