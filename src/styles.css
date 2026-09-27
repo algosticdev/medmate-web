@@ -2974,3 +2974,438 @@ tbody tr:hover {
     border-top: 1px solid var(--line);
   }
 }
+
+/* ==========================================================================
+   Soft-rounded SaaS dashboard (per reference screenshot). Main content only
+   — sidebar rules are intentionally untouched.
+   ========================================================================== */
+:root {
+  --ink: #16241f;
+  --ink-2: #3f4f49;
+  --ink-3: #7c8b85;
+  --page-bg: #f4f7f4;
+  --surface: #fff;
+  --line: #eef2ee;
+  --accent: #0e4a3a;
+  --accent-ink: #0a382b;
+  --accent-light: #e1f3e6;
+  --accent-light-ink: #1c7a4e;
+  --radius: 20px;
+  --radius-sm: 14px;
+  --teal: var(--accent);
+  --card-shadow: 0 1px 2px rgba(16, 40, 30, 0.03), 0 10px 30px rgba(16, 40, 30, 0.05);
+}
+body {
+  background: var(--page-bg);
+  color: var(--ink-2);
+}
+h1,
+h2,
+h3 {
+  color: var(--ink);
+}
+.topbar {
+  background: var(--page-bg);
+  border-bottom: 0;
+}
+.main-content {
+  padding: 26px 30px 0;
+}
+.page-eyebrow,
+.heading-dot {
+  display: none;
+}
+.page-heading {
+  align-items: center;
+  margin-bottom: 24px;
+}
+.page-heading h1 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--ink);
+}
+.page-heading p {
+  font-size: 13.5px;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+.date-chip {
+  border-radius: 999px;
+  border-color: var(--line);
+  background: var(--surface);
+  box-shadow: var(--card-shadow);
+}
+
+/* Pill buttons */
+.btn {
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: none;
+  padding: 10px 18px;
+}
+.btn.primary,
+.page-actions .btn.primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+.btn.primary:hover {
+  background: var(--accent-ink);
+}
+.btn.secondary,
+.page-actions .btn.secondary {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  box-shadow: var(--card-shadow);
+}
+.btn.secondary:hover {
+  background: #f7faf7;
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-light);
+  color: var(--accent-light-ink);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-weight: 600;
+  font-size: 12px;
+}
+.text-link:hover {
+  background: #d3ecda;
+  text-decoration: none;
+}
+
+/* KPI cards: soft, rounded, first card as the highlighted dark tile */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.stat {
+  position: relative;
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: visible;
+}
+.stat-icon {
+  display: grid !important;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  place-items: center;
+  background: var(--accent-light) !important;
+  color: var(--accent-light-ink) !important;
+}
+.stat-icon svg {
+  width: 15px;
+  height: 15px;
+}
+.stat-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: normal;
+  min-height: 0;
+  padding-right: 34px;
+}
+.stat > strong {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  color: var(--ink);
+  margin-top: 10px;
+  line-height: 1;
+}
+.stat small {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 12px;
+  background: var(--accent-light);
+  color: var(--accent-light-ink);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  white-space: normal;
+}
+/* highlighted first tile, like "Total Projects" in the reference */
+.stat:first-child {
+  background: var(--accent);
+}
+.stat:first-child .stat-label {
+  color: #cfe6d9;
+}
+.stat:first-child > strong {
+  color: #fff;
+}
+.stat:first-child .stat-icon {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+}
+.stat:first-child small {
+  background: rgba(255, 255, 255, 0.16);
+  color: #eaf5ee;
+}
+
+/* Panels */
+.panel {
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+.panel-heading {
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--line);
+  min-height: 0;
+}
+.panel-heading h2 {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.panel-heading p {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.dashboard-grid,
+.dashboard-bottom {
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.panel-footer {
+  border-top: 1px solid var(--line);
+  padding: 12px;
+}
+
+/* Table */
+table {
+  font-size: 13px;
+}
+th {
+  background: transparent;
+  color: var(--ink-3);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 10px 22px;
+  border-bottom: 1px solid var(--line);
+}
+td {
+  padding: 13px 22px;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+td strong,
+.medicine-cell strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+tbody tr:hover {
+  background: #fafcfa;
+}
+.medicine-symbol {
+  background: var(--accent-light);
+  color: var(--accent-light-ink);
+  border-radius: 10px;
+  min-width: 30px;
+  height: 30px;
+}
+tr:nth-of-type(4n + 2) .medicine-symbol {
+  background: #e5eefb;
+  color: #3868b0;
+}
+tr:nth-of-type(4n + 3) .medicine-symbol {
+  background: #f1eafb;
+  color: #7350ad;
+}
+tr:nth-of-type(4n) .medicine-symbol {
+  background: #fdf0d9;
+  color: #a15c07;
+}
+.compartment-tag {
+  background: #f4f7f4;
+  border: 0;
+  border-radius: 8px;
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+/* Badges: soft pill, generous padding */
+.badge {
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 4px 11px;
+  font-size: 11px;
+}
+.badge::before {
+  display: none;
+}
+.badge-on_time,
+.badge-normal,
+.badge-online,
+.badge-assigned,
+.badge-reviewed {
+  background: #e1f3e6;
+  color: #16794b;
+}
+.badge-late,
+.badge-low_stock,
+.badge-syncing,
+.badge-active_reminder,
+.badge-new {
+  background: #fdf0d9;
+  color: #a15c07;
+}
+.badge-missed,
+.badge-refill_required,
+.badge-error,
+.badge-input_fault,
+.badge-sensor_fault {
+  background: #fbe3e0;
+  color: #bb3a2b;
+}
+.badge-post_missed {
+  background: #e5eefb;
+  color: #2c5a9e;
+}
+.badge-wrong_compartment {
+  background: #f1eafb;
+  color: #6d47ad;
+}
+.badge-upcoming,
+.badge-unknown,
+.badge-offline,
+.badge-awaiting_event {
+  background: #eef1ee;
+  color: var(--ink-3);
+}
+.count-pill {
+  background: #fbe3e0;
+  border: 0;
+  color: #bb3a2b;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+
+/* Alerts */
+.alert-item {
+  border-bottom: 1px solid var(--line);
+  padding: 16px 22px;
+}
+.alert-symbol {
+  background: #fbe3e0 !important;
+  color: #bb3a2b !important;
+  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+}
+.alert-copy strong {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 13px;
+}
+.alert-copy p {
+  color: var(--ink-2);
+  font-size: 12.5px;
+}
+.unread-dot {
+  background: #bb3a2b;
+}
+
+/* Device panel styled like the "Time Tracker" dark tile */
+.device-card {
+  background: var(--accent);
+  border: 0;
+  border-radius: var(--radius);
+  color: #e7f2ea;
+  padding: 22px;
+}
+.device-card-icon {
+  background: rgba(255, 255, 255, 0.14);
+  border: 0;
+  color: #fff;
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+}
+.device-card .eyebrow {
+  color: #a9d3bb;
+}
+.device-card h2 {
+  color: #fff;
+  font-size: 19px;
+}
+.device-card p {
+  color: #bcdbc8;
+}
+.device-card .btn.secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-shadow: none;
+}
+.device-card .btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Empty state */
+.empty svg {
+  color: var(--accent-light-ink);
+  opacity: 0.5;
+}
+.empty h3 {
+  color: var(--ink);
+}
+
+/* Sign-in card matches the softer radius */
+.sign-in-page {
+  background: var(--page-bg);
+}
+.sign-in-card {
+  border-radius: 24px;
+  border: 0;
+  box-shadow: var(--card-shadow);
+}
+.sign-in-card .btn.primary {
+  background: var(--accent);
+}
+.auth-tabs {
+  border-radius: 999px;
+  background: var(--accent-light);
+}
+.auth-tabs button {
+  border-radius: 999px;
+}
+.auth-tabs button.selected {
+  color: var(--accent);
+}
+
+@media (max-width: 1250px) {
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
