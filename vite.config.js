@@ -7,6 +7,7 @@ export default defineConfig({
   base : process.env.VITE_BASE_PATH || "/medmate-web"
   build: {
     rollupOptions: {
+       outDir: 'dist',
       input: {
         app: resolve(__dirname, "index.html"),
         landing: resolve(__dirname, "landing.html"),
