@@ -250,6 +250,9 @@
           "notificationsEnabled": {
             ".validate": "newData.isBoolean()"
           },
+          "emailNotificationsEnabled": {
+            ".validate": "newData.isBoolean()"
+          },
           "eventCategories": {
             ".validate": "newData.hasChildren(['MISSED','WRONG_COMPARTMENT'])",
             "MISSED": {
@@ -283,7 +286,20 @@
             "medicineId",
             "compartmentId",
             "eventType"
-          ]
+          ],
+          "$eventId": {
+            "notificationDelivery": {
+              ".write": "auth != null && auth.uid == $uid && (root.child('users').child(auth.uid).child('role').val() == 'caregiver' || root.child('users').child(auth.uid).child('role').val() == 'admin')"
+            },
+            "caregiverNotification": {
+              ".write": "auth != null && auth.uid == $uid && (root.child('users').child(auth.uid).child('role').val() == 'caregiver' || root.child('users').child(auth.uid).child('role').val() == 'admin')",
+              ".validate": "newData.isBoolean()"
+            },
+            "caregiverNotificationStatus": {
+              ".write": "auth != null && auth.uid == $uid && (root.child('users').child(auth.uid).child('role').val() == 'caregiver' || root.child('users').child(auth.uid).child('role').val() == 'admin')",
+              ".validate": "newData.val() == 'SENT' || newData.val() == 'FAILED' || newData.val() == 'NOT_REQUIRED'"
+            }
+          }
         },
         "alerts": {
           ".write": false,

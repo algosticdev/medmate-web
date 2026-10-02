@@ -32,6 +32,8 @@ import { watchAuth, logout } from "./services/auth-service.js";
 import { isConfigured, appConfig } from "./services/firebase-config.js";
 import { setContext, watchData } from "./services/store.js";
 import { getAlerts } from "./services/alert-service.js";
+import { entries } from "./services/domain.js";
+import { notifyCaregiverForEvent } from "./services/caregiver-notification-service.js";
 import { userMessage } from "./services/errors.js";
 const routes = {
   dashboard: [
@@ -122,6 +124,7 @@ export default function App() {
   const [toast, setToast] = useState(null);
   const [tick, setTick] = useState(0);
   const seenAlerts = useRef(null);
+  const notifyInFlight = useRef(new Set());
   const notify = (message, error = false) => setToast({ message, error });
   useEffect(() => {
     const query = window.matchMedia("(max-width: 800px)");
@@ -288,6 +291,21 @@ export default function App() {
     }
     seenAlerts.current = currentIds;
   }, [state]);
+  useEffect(() => {
+    if (!user || user.role !== "caregiver" || !state?.events) return;
+    for (const event of entries(state.events)) {
+      if (
+        !["MISSED", "WRONG_COMPARTMENT"].includes(event.eventType) ||
+        event.notificationDelivery ||
+        notifyInFlight.current.has(event.id)
+      )
+        continue;
+      notifyInFlight.current.add(event.id);
+      notifyCaregiverForEvent(user.uid, event.id, event, state.caregiver).finally(() =>
+        notifyInFlight.current.delete(event.id),
+      );
+    }
+  }, [state?.events, state?.caregiver, user]);
   if (!authReady) return <Loading />;
   if (!user) return <Login authError={authError} />;
   if (!state && !dataError) return <Loading />;

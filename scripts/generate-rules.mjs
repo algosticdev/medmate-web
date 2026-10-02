@@ -134,6 +134,7 @@ const rules = {
               "newData.val() == 'in_app' || newData.val() == 'email'",
           },
           notificationsEnabled: { ".validate": "newData.isBoolean()" },
+          emailNotificationsEnabled: { ".validate": "newData.isBoolean()" },
           eventCategories: {
             ".validate": "newData.hasChildren(['MISSED','WRONG_COMPARTMENT'])",
             MISSED: { ".validate": "newData.val() == true" },
@@ -158,6 +159,18 @@ const rules = {
             "compartmentId",
             "eventType",
           ],
+          $eventId: {
+            notificationDelivery: { ".write": role },
+            caregiverNotification: {
+              ".write": role,
+              ".validate": "newData.isBoolean()",
+            },
+            caregiverNotificationStatus: {
+              ".write": role,
+              ".validate":
+                "newData.val() == 'SENT' || newData.val() == 'FAILED' || newData.val() == 'NOT_REQUIRED'",
+            },
+          },
         },
         alerts: { ".write": false, ".indexOn": ["timestamp"] },
         devices: { ".write": false },

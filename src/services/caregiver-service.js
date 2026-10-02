@@ -12,6 +12,7 @@ export async function saveCaregiver(input, verifiedEmail, verifiedPhoneNumber) {
     email,
     notificationPreference: "in_app",
     notificationsEnabled: input.notificationsEnabled === "on",
+    emailNotificationsEnabled: input.emailNotificationsEnabled === "on",
     eventCategories: { MISSED: true, WRONG_COMPARTMENT: true },
     updatedAt: Date.now(),
   };

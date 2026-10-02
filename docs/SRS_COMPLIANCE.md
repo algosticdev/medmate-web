@@ -128,9 +128,9 @@ The device/core must continue after wrong access or silence and process later sc
 Real stock/event conditions create interface alerts and opt-in browser notices while open. Physical reminders, authoritative event alerts, and closed-app delivery remain.
 
 ## FR-26 — Caregiver Notification
-**Status: NOT IMPLEMENTED**  
-**Files preparing integration:** `src/services/caregiver-service.js`, `src/services/auth-service.js`, `src/pages/Settings.jsx`, `docs/DEVICE_INTEGRATION.md`.  
-Verified email, phone OTP linking/changing, preferences, and delivery-status fields exist. No trusted backend plus email/SMS/push provider currently sends mandatory notifications without dashboard monitoring.
+**Status: PROTOTYPE IMPLEMENTED (frontend-only, not production-safe)**  
+**Files:** `src/services/brevo-email-service.js`, `src/services/caregiver-notification-service.js`, `src/App.jsx`, `src/services/caregiver-service.js`, `src/pages/Settings.jsx`, `database.rules.json`, `.env.example`.  
+While the MedMate web app is open and signed in, it watches its own live `accounts/{uid}/events` snapshot for new MISSED/WRONG_COMPARTMENT events and calls the Brevo transactional email API directly from the browser. A Firebase transaction claim on `notificationDelivery` prevents duplicate sends across re-renders, remounts, listener reconnects, and offline-synced events. **`VITE_BREVO_API_KEY` is bundled into the client JavaScript and is not a secret in this build** — acceptable for a demo, not for production. A real deployment needs a server (Cloud Function, Vercel/Netlify function, etc.) to keep the key off the client, and notification only fires while a caregiver's browser tab is open (no closed-app delivery).
 
 ## FR-27 — Event Logging
 **Status: PARTIAL**  

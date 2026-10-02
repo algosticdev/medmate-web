@@ -199,6 +199,14 @@ export function Caregiver({ state, user, notify }) {
               />
               Enable caregiver notifications
             </label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="emailNotificationsEnabled"
+                defaultChecked={profile.emailNotificationsEnabled === true}
+              />
+              Email me for missed doses and wrong-compartment access
+            </label>
             {error && (
               <p className="form-error" role="alert">
                 {error}
